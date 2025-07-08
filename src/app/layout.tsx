@@ -3,7 +3,7 @@ import { Roboto } from 'next/font/google';
 import '@/style/globals.scss';
 
 const robotoSans = Roboto({
-    weight: ['400', '700'],
+    weight: ['100', '400', '700'],
     variable: '--font-geist-sans',
     subsets: ['latin'],
 });

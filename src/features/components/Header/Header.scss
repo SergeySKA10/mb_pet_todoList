@@ -1,0 +1,11 @@
+.header {
+    margin-top: 100px;
+    display: block;
+    text-align: center;
+    color: rgba(171, 142, 142, 0.4);
+    font-weight: 100;
+    font-size: 100px;
+    &::first-letter {
+        text-transform: uppercase;
+    }
+}

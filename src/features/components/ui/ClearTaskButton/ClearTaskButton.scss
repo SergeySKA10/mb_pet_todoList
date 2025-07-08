@@ -1,0 +1,20 @@
+.clearCompletedBtn {
+    transition: all 0.3s;
+    font-size: 14px;
+    font-weight: 400;
+    color: $text_color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 115px;
+    border: none;
+    background-color: inherit;
+    overflow: hidden;
+    cursor: pointer;
+    &:hover {
+        color: $active_elem_color;
+    }
+    & span::first-letter {
+        text-transform: uppercase;
+    }
+}

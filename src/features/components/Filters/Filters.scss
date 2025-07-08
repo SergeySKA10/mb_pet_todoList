@@ -1,0 +1,10 @@
+.filters {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    gap: 10px;
+    width: 300px;
+    flex-wrap: wrap;
+    background-color: inherit;
+}

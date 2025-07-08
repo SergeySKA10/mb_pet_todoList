@@ -5,7 +5,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;
     cursor: pointer;
+    background-color: inherit;
     &:hover {
         transform: scale(1.2);
         span::before {
@@ -21,7 +23,7 @@
         display: block;
         height: 2px;
         width: 13px;
-        background-color: #a2a4a6;
+        background-color: $decor_elem_color;
         transform: rotate(135deg);
         left: 4px;
         top: 2px;
@@ -32,7 +34,7 @@
         display: block;
         height: 2px;
         width: 12px;
-        background-color: #a2a4a6;
+        background-color: $decor_elem_color;
         transform: rotate(45deg);
         right: 4px;
     }

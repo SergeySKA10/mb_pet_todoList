@@ -4,8 +4,8 @@ import './ArrowButtonInput.scss';
 
 export const ArrowButtonInput = () => {
     return (
-        <div className="arrowInput">
+        <button className="arrowInput">
             <span></span>
-        </div>
+        </button>
     );
 };

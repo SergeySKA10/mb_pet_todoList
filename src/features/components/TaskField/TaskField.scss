@@ -1,0 +1,7 @@
+.taskField {
+    display: flex;
+    flex-direction: column;
+    min-height: 30px;
+    border-top: 1px solid $main_color;
+    border-bottom: 1px solid $main_color;
+}

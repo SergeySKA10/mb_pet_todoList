@@ -1,0 +1,23 @@
+.tabFilter {
+    transition: all 0.3s;
+    padding: 10px;
+    border: none;
+    max-width: 100px;
+    font-size: 14px;
+    font-weight: 400;
+    color: $text_color;
+    background-color: inherit;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    &:hover {
+        color: $active_elem_color;
+    }
+    &::first-letter {
+        text-transform: uppercase;
+    }
+}
+
+.activeFilter {
+    border: 2px solid $decor_elem_color;
+}

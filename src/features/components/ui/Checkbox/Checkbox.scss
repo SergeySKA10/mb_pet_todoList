@@ -1,0 +1,28 @@
+.checkbox {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 2px solid $decor_elem_color;
+    background-color: inherit;
+    & span::before {
+        content: '';
+        display: block;
+        position: relative;
+        height: 2px;
+        width: 17px;
+        left: 1px;
+        transform: rotate(125deg);
+        background-color: #39ff14;
+    }
+    & span::after {
+        content: '';
+        display: block;
+        position: relative;
+        height: 2px;
+        width: 7px;
+        right: 1px;
+        top: 2px;
+        transform: rotate(45deg);
+        background-color: #39ff14;
+    }
+}

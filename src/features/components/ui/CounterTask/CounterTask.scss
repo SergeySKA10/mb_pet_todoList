@@ -1,0 +1,11 @@
+.counter {
+    width: 150px;
+    height: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    color: $text_color;
+    display: flex;
+    align-items: center;
+    background-color: inherit;
+    overflow: hidden;
+}

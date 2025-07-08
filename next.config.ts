@@ -1,7 +1,11 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+    sassOptions: {
+        additionalData: `
+      $main_color: #e5e5e3;
+    `,
+    },
 };
 
 export default nextConfig;

@@ -1,0 +1,14 @@
+.input {
+    padding: 10px;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    background-color: inherit;
+    &:placeholder-shown {
+        font-size: 18px;
+        font-weight: 400;
+        font-style: italic;
+    }
+}

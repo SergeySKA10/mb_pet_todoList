@@ -10,9 +10,12 @@
     border-radius: 10px;
     cursor: pointer;
     overflow: hidden;
-    &:hover {
-        color: $active_elem_color;
+    @media (hover: hover) {
+        &:hover {
+            color: $active_elem_color;
+        }
     }
+
     &::first-letter {
         text-transform: uppercase;
     }

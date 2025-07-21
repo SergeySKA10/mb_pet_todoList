@@ -8,15 +8,18 @@
     border: none;
     cursor: pointer;
     background-color: inherit;
-    &:hover {
-        transform: scale(1.2);
-        span::before {
-            background-color: $text_color;
-        }
-        span::after {
-            background-color: $text_color;
+    @media (hover: hover) {
+        &:hover {
+            transform: scale(1.2);
+            span::before {
+                background-color: $text_color;
+            }
+            span::after {
+                background-color: $text_color;
+            }
         }
     }
+
     span::before {
         content: '';
         position: relative;

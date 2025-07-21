@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
+import { Popup } from '@/features/components/ui/Popup/Popup';
 import '@/style/globals.scss';
 
 const robotoSans = Roboto({
@@ -20,7 +21,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${robotoSans.variable}`}>{children}</body>
+            <body className={`${robotoSans.variable}`}>
+                {children}
+                <Popup />
+            </body>
         </html>
     );
 }

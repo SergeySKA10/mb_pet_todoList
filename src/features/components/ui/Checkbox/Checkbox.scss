@@ -4,6 +4,7 @@
     border-radius: 100%;
     border: 2px solid $decor_elem_color;
     background-color: inherit;
+    cursor: pointer;
     & span::before {
         content: '';
         display: block;

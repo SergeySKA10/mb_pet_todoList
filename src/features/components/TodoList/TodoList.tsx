@@ -1,7 +1,7 @@
 import { InputField } from '../InputField/InputField';
 import { TaskField } from '../TaskField/TaskField';
 import { FooterTaskBlock } from '../FooterTaskBlock/FooterTaskBlock';
-import { Button } from '../ui/ButtonAdd/ButtonAdd';
+import { ButtonOpenPopup } from '../ui/Buttons/ButtonOpenPopup';
 import './TodoList.scss';
 
 export const TodoList = () => {
@@ -10,7 +10,7 @@ export const TodoList = () => {
             <InputField />
             <TaskField />
             <FooterTaskBlock />
-            <Button type="open_modal" />
+            <ButtonOpenPopup />
         </article>
     );
 };

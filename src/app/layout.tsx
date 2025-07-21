@@ -1,5 +1,7 @@
-import type { Metadata } from 'next';
+'use client';
+
 import { Roboto } from 'next/font/google';
+import { TodoListContextProvider } from '@/features/context/TodoContext';
 import { Popup } from '@/features/components/ui/Popup/Popup';
 import '@/style/globals.scss';
 
@@ -9,11 +11,6 @@ const robotoSans = Roboto({
     subsets: ['latin'],
 });
 
-export const metadata: Metadata = {
-    title: 'Todos List',
-    description: 'to do list app',
-};
-
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -22,8 +19,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${robotoSans.variable}`}>
-                {children}
-                <Popup />
+                <TodoListContextProvider>
+                    {children}
+                    <Popup />
+                </TodoListContextProvider>
             </body>
         </html>
     );

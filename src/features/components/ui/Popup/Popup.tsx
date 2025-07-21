@@ -1,19 +1,30 @@
-import { Button } from '../ButtonAdd/ButtonAdd';
+'use client';
+
+import { useContext } from 'react';
+import { TodoListContext } from '@/features/context/TodoContext';
+import { ButtonAddTask } from '../Buttons/ButtonAddTask';
 import './Popup.scss';
 
 export const Popup = () => {
+    const { popupWindow, showPopup } = useContext(TodoListContext);
+
+    const activClazz = popupWindow === 'show' ? 'popup_active' : '';
+
     return (
-        <section className="popup">
+        <section className={`popup ${activClazz}`}>
             <div className="popup__window">
                 <form>
-                    <span className="popup__close"></span>
+                    <span
+                        className="popup__close"
+                        onClick={() => showPopup('hide')}
+                    ></span>
                     <textarea
                         className="popup__task"
                         name="text"
                         id="text_task"
                         placeholder="Опишите вашу задачу"
                     ></textarea>
-                    <Button type="add_task" />
+                    <ButtonAddTask />
                 </form>
             </div>
         </section>

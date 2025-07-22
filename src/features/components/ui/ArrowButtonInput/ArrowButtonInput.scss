@@ -19,7 +19,9 @@
             }
         }
     }
-
+    span {
+        transition: all 0.3s;
+    }
     span::before {
         content: '';
         position: relative;

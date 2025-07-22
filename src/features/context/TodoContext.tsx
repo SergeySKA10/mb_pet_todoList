@@ -5,36 +5,79 @@ import type {
     IInitialStateContext,
     IProviderProps,
     ITodoListContext,
+    ITask,
 } from '@/shared/context/contextShared';
 
 const initialStateContext: IInitialStateContext = {
-    taskActive: [],
-    taskComplite: [],
+    task: [],
     taskWindow: 'show',
     popupWindow: 'hide',
+    filter: 'all',
+    filterByName: '',
 };
 
 export const TodoListContext = createContext<ITodoListContext>({
-    taskActive: initialStateContext.taskActive,
-    taskComplite: initialStateContext.taskComplite,
+    task: initialStateContext.task,
     taskWindow: initialStateContext.taskWindow,
     popupWindow: initialStateContext.popupWindow,
-    // addTask: () => {},
+    filter: initialStateContext.filter,
+    filterByName: initialStateContext.filterByName,
+    addTask: () => {},
     showPopup: () => {},
+    showDeskTask: () => {},
+    clearCompliteTask: () => {},
+    changeStatusTask: () => {},
+    setFilter: () => {},
+    setFilterByName: () => {},
 });
 
 export const TodoListContextProvider = ({ children }: IProviderProps) => {
     const [state, dispatch] = useReducer(reducer, initialStateContext);
 
     const value: ITodoListContext = {
-        taskActive: state.taskActive,
-        taskComplite: state.taskComplite,
+        task: state.task,
         popupWindow: state.popupWindow,
         taskWindow: state.taskWindow,
-        // addTask: () => {},
+        filter: state.filter,
+        filterByName: state.filterByName,
+        addTask: (value: ITask) => {
+            dispatch({
+                type: ActionContextType.ADD_TASK,
+                payload: value,
+            });
+        },
         showPopup: (value: ITodoListContext['popupWindow']) => {
             dispatch({
                 type: ActionContextType.SET_SHOW_POPUP,
+                payload: value,
+            });
+        },
+        showDeskTask: (value: ITodoListContext['taskWindow']) => {
+            dispatch({
+                type: ActionContextType.SET_SHOW_DESK_TASK,
+                payload: value,
+            });
+        },
+        clearCompliteTask: () => {
+            dispatch({
+                type: ActionContextType.CLEAR_COMPLITE_TASKS,
+            });
+        },
+        changeStatusTask: (value: string) => {
+            dispatch({
+                type: ActionContextType.SET_STATUS_TASK,
+                payload: value,
+            });
+        },
+        setFilter: (value: ITodoListContext['filter']) => {
+            dispatch({
+                type: ActionContextType.SET_FILTER,
+                payload: value,
+            });
+        },
+        setFilterByName: (value: string) => {
+            dispatch({
+                type: ActionContextType.SET_FILTER_BY_NAME,
                 payload: value,
             });
         },

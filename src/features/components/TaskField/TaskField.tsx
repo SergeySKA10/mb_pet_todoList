@@ -1,3 +1,7 @@
+'use client';
+
+import { useContext } from 'react';
+import { TodoListContext } from '@/features/context/TodoContext';
 import { Task } from '../ui/Task/Task';
 import './TaskField.scss';
 
@@ -22,11 +26,19 @@ const initialStateTask: ITask[] = [
 ];
 
 export const TaskField = () => {
+    const { taskWindow } = useContext(TodoListContext);
+
+    const heightTaskField = taskWindow === 'hide' ? '0px' : '';
+
     const tasks = initialStateTask.map((el, i) => {
         const completeTask = i === 1 ? 'complete' : '';
 
         return <Task key={el.id} text={el.text} complete={completeTask} />;
     });
 
-    return <article className="taskField">{tasks}</article>;
+    return (
+        <article className="taskField" style={{ height: heightTaskField }}>
+            {tasks}
+        </article>
+    );
 };

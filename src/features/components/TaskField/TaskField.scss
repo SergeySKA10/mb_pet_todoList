@@ -1,7 +1,10 @@
 .taskField {
+    transition: all 0.3s;
     display: flex;
     flex-direction: column;
-    min-height: 30px;
+    height: 40vh;
     border-top: 1px solid $main_color;
     border-bottom: 1px solid $main_color;
+    overflow-y: auto;
+    scrollbar-width: thin;
 }

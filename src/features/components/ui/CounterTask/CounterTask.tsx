@@ -1,7 +1,11 @@
 'use client';
 
+import { useContext } from 'react';
+import { TodoListContext } from '@/features/context/TodoContext';
 import './CounterTask.scss';
 
 export const CounterTask = () => {
-    return <p className="counter">2 items left</p>;
+    const { task } = useContext(TodoListContext);
+
+    return <p className="counter">{`${task.length} items left`}</p>;
 };

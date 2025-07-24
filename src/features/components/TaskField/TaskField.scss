@@ -8,3 +8,13 @@
     overflow-y: auto;
     scrollbar-width: thin;
 }
+
+.no-task {
+    margin-top: 20px;
+    display: block;
+    color: $text_color;
+    width: 100%;
+    font-size: 22px;
+    font-weight: 400;
+    text-align: center;
+}

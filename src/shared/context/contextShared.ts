@@ -2,7 +2,7 @@ type StatusTask = 'active' | 'complite';
 
 export interface ITask {
     id: string;
-    name: string;
+    text: string;
     status: StatusTask;
 }
 

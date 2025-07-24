@@ -1,19 +1,46 @@
 'use client';
 
-import { useContext } from 'react';
+import { nanoid } from 'nanoid';
+import { useContext, type FormEvent } from 'react';
 import { TodoListContext } from '@/features/context/TodoContext';
+import type { ITask } from '@/shared/context/contextShared';
 import { ButtonAddTask } from '../Buttons/ButtonAddTask';
 import './Popup.scss';
 
 export const Popup = () => {
-    const { popupWindow, showPopup } = useContext(TodoListContext);
+    const { popupWindow, showPopup, addTask } = useContext(TodoListContext);
 
     const activClazz = popupWindow === 'show' ? 'popup_active' : '';
+
+    const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const formData = new FormData(e.currentTarget);
+
+        const data: ITask = {
+            id: '',
+            text: '',
+            status: 'active',
+        };
+
+        formData.forEach((value, key) => {
+            data[key] = value as string;
+        });
+
+        data.id = nanoid();
+        data.status = 'active';
+
+        addTask(data);
+
+        e.currentTarget.reset();
+
+        showPopup('hide');
+    };
 
     return (
         <section className={`popup ${activClazz}`}>
             <div className="popup__window">
-                <form>
+                <form onSubmit={handleSubmitForm}>
                     <span
                         className="popup__close"
                         onClick={() => showPopup('hide')}

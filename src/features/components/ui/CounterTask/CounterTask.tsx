@@ -5,7 +5,7 @@ import { TodoListContext } from '@/features/context/TodoContext';
 import './CounterTask.scss';
 
 export const CounterTask = () => {
-    const { task } = useContext(TodoListContext);
+    const { counterActiveTask } = useContext(TodoListContext);
 
-    return <p className="counter">{`${task.length} items left`}</p>;
+    return <p className="counter">{`${counterActiveTask} items left`}</p>;
 };

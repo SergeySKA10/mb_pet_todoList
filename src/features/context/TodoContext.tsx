@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useReducer } from 'react';
 import reducer from './reducer';
 import { ActionContextType } from './actions';
@@ -9,9 +11,10 @@ import type {
 } from '@/shared/context/contextShared';
 
 const initialStateContext: IInitialStateContext = {
-    task: [],
+    task: {},
     taskWindow: 'show',
     popupWindow: 'hide',
+    counterActiveTask: 0,
     filter: 'all',
     filterByName: '',
 };
@@ -22,6 +25,7 @@ export const TodoListContext = createContext<ITodoListContext>({
     popupWindow: initialStateContext.popupWindow,
     filter: initialStateContext.filter,
     filterByName: initialStateContext.filterByName,
+    counterActiveTask: initialStateContext.counterActiveTask,
     addTask: () => {},
     showPopup: () => {},
     showDeskTask: () => {},
@@ -40,6 +44,7 @@ export const TodoListContextProvider = ({ children }: IProviderProps) => {
         taskWindow: state.taskWindow,
         filter: state.filter,
         filterByName: state.filterByName,
+        counterActiveTask: state.counterActiveTask,
         addTask: (value: ITask) => {
             dispatch({
                 type: ActionContextType.ADD_TASK,
@@ -63,10 +68,10 @@ export const TodoListContextProvider = ({ children }: IProviderProps) => {
                 type: ActionContextType.CLEAR_COMPLITE_TASKS,
             });
         },
-        changeStatusTask: (value: string) => {
+        changeStatusTask: (id: string, value: boolean) => {
             dispatch({
                 type: ActionContextType.SET_STATUS_TASK,
-                payload: value,
+                payload: { id, value },
             });
         },
         setFilter: (value: ITodoListContext['filter']) => {

@@ -9,7 +9,6 @@ export const ArrowButtonInput = () => {
     const scale = taskWindow === 'hide' ? '-1' : '1';
 
     const handleShowDeskTask = () => {
-        console.log(taskWindow);
         if (taskWindow === 'show') {
             showDeskTask('hide');
         } else {

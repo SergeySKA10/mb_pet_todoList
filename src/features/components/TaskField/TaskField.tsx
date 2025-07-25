@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext } from 'react';
+import { useContext, type JSX } from 'react';
 import { TodoListContext } from '@/features/context/TodoContext';
 import { Task } from '../ui/Task/Task';
 import './TaskField.scss';
@@ -10,24 +10,29 @@ export const TaskField = () => {
 
     const heightTaskField = taskWindow === 'hide' ? '0px' : '';
 
+    const content: JSX.Element[] = [];
+
+    for (const key in task) {
+        if (task.hasOwnProperty(key)) {
+            const completeTask =
+                task[key]!.status === 'complete' ? 'complete' : '';
+            content.push(
+                <Task
+                    key={task[key]!.id}
+                    id={task[key]!.id}
+                    text={task[key]!.text}
+                    complete={completeTask}
+                />
+            );
+        }
+    }
+
     return (
         <article className="taskField" style={{ height: heightTaskField }}>
-            {task.length === 0 ? (
+            {content.length === 0 ? (
                 <p className="no-task">На данный момент у Вас нет задач</p>
             ) : (
-                task.map((el) => {
-                    const completeTask =
-                        el.status === 'complite' ? 'complite' : '';
-
-                    return (
-                        <Task
-                            key={el.id}
-                            id={el.id}
-                            text={el.text}
-                            complite={completeTask}
-                        />
-                    );
-                })
+                content
             )}
         </article>
     );

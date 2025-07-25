@@ -12,11 +12,10 @@ export const Checkbox = ({
     complete: boolean;
 }) => {
     const { changeStatusTask } = useContext(TodoListContext);
-
     const display = complete ? 'block' : 'none';
 
     const onChangeStatusTask = () => {
-        changeStatusTask(id);
+        changeStatusTask(id, complete);
     };
 
     return (

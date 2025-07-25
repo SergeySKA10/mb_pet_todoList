@@ -1,3 +1,5 @@
+'use client';
+
 import type { IInitialStateContext } from '@/shared/context/contextShared';
 import type { TodoListAction } from './actions';
 import { ActionContextType } from './actions';
@@ -20,41 +22,21 @@ export default function reducer(
             };
 
         case ActionContextType.ADD_TASK:
-            if (state.task.length === 0) {
-                state.task.push(actions.payload);
+            if (state.task[actions.payload.id]) {
+                return state;
             } else {
-                let l = 0;
-                let r = state.task.length - 1;
-
-                while (l < r) {
-                    const mid = Math.floor((r + l) / 2);
-
-                    if (actions.payload.id > state.task[mid].id) {
-                        l = mid + 1;
-                    } else {
-                        r = mid;
-                    }
-                }
-
-                if (l === state.task.length - 1) {
-                    state.task[l + 1] = actions.payload;
-                } else {
-                    for (let i = state.task.length; i > l; i--) {
-                        state.task[i] = state.task[i - 1];
-                    }
-
-                    state.task[l] = actions.payload;
-                }
+                state.task[actions.payload.id] = actions.payload;
+                return {
+                    ...state,
+                    counterActiveTask: (state.counterActiveTask += 1),
+                };
             }
 
-            return state;
-
         case ActionContextType.CLEAR_COMPLITE_TASKS:
-            const updateTask = [];
-
-            for (let i = 0; i < state.task.length; i++) {
-                if (state.task[i].status !== 'complite') {
-                    updateTask.push(state.task[i]);
+            const updateTask: IInitialStateContext['task'] = {};
+            for (const key in state.task) {
+                if (state.task[key]?.status !== 'complete') {
+                    updateTask[key] = state.task[key];
                 }
             }
 
@@ -76,29 +58,24 @@ export default function reducer(
             };
 
         case ActionContextType.SET_STATUS_TASK:
-            let l = 0;
-            let r = state.task.length - 1;
-
-            while (l <= r) {
-                const mid = Math.floor((r + l) / 2);
-
-                if (actions.payload === state.task[mid].id) {
-                    if (state.task[mid].status === 'active') {
-                        state.task[mid].status = 'complite';
-                    } else {
-                        state.task[mid].status = 'active';
-                    }
-                    break;
-                }
-
-                if (actions.payload < state.task[mid].id) {
-                    r = mid;
-                } else {
-                    l = mid + 1;
-                }
+            if (
+                state.task[actions.payload.id] &&
+                state.task[actions.payload.id]?.status === 'active' &&
+                !actions.payload.value
+            ) {
+                state.task[actions.payload.id]!.status = 'complete';
+                state.counterActiveTask = state.counterActiveTask -= 1;
+            } else if (
+                state.task[actions.payload.id] &&
+                state.task[actions.payload.id]?.status === 'complete' &&
+                actions.payload.value
+            ) {
+                state.task[actions.payload.id]!.status = 'active';
+                state.counterActiveTask = state.counterActiveTask += 1;
             }
-
-            return state;
+            return {
+                ...state,
+            };
 
         default:
             return state;

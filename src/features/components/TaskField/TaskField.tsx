@@ -3,18 +3,22 @@
 import { useContext, type JSX } from 'react';
 import { TodoListContext } from '@/features/context/TodoContext';
 import { filerTask } from '@/features/utils/filterTasks';
+import { filterTaskByName } from '@/features/utils/filterTaskByName';
 import { Task } from '../ui/Task/Task';
 import type { IAllTask } from '@/shared/context/contextShared';
 import './TaskField.scss';
 
 export const TaskField = () => {
-    const { taskWindow, task, activeFilter } = useContext(TodoListContext);
+    const { taskWindow, task, activeFilter, filterByName } =
+        useContext(TodoListContext);
 
     const heightTaskField = taskWindow === 'hide' ? '0px' : '';
 
     const content: JSX.Element[] = [];
 
-    const onFilterTask = filerTask(activeFilter, task as IAllTask);
+    const onFilterTask = filterByName
+        ? filterTaskByName(filterByName, task as IAllTask)
+        : filerTask(activeFilter, task as IAllTask);
 
     for (const key in onFilterTask) {
         if (onFilterTask.hasOwnProperty(key)) {

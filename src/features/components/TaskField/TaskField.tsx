@@ -2,25 +2,29 @@
 
 import { useContext, type JSX } from 'react';
 import { TodoListContext } from '@/features/context/TodoContext';
+import { filerTask } from '@/features/utils/filterTasks';
 import { Task } from '../ui/Task/Task';
+import type { IAllTask } from '@/shared/context/contextShared';
 import './TaskField.scss';
 
 export const TaskField = () => {
-    const { taskWindow, task } = useContext(TodoListContext);
+    const { taskWindow, task, activeFilter } = useContext(TodoListContext);
 
     const heightTaskField = taskWindow === 'hide' ? '0px' : '';
 
     const content: JSX.Element[] = [];
 
-    for (const key in task) {
-        if (task.hasOwnProperty(key)) {
+    const onFilterTask = filerTask(activeFilter, task as IAllTask);
+
+    for (const key in onFilterTask) {
+        if (onFilterTask.hasOwnProperty(key)) {
             const completeTask =
-                task[key]!.status === 'complete' ? 'complete' : '';
+                onFilterTask[key]!.status === 'complete' ? 'complete' : '';
             content.push(
                 <Task
-                    key={task[key]!.id}
-                    id={task[key]!.id}
-                    text={task[key]!.text}
+                    key={onFilterTask[key]!.id}
+                    id={onFilterTask[key]!.id}
+                    text={onFilterTask[key]!.text}
                     complete={completeTask}
                 />
             );

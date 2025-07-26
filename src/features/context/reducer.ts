@@ -48,7 +48,7 @@ export default function reducer(
         case ActionContextType.SET_FILTER:
             return {
                 ...state,
-                filter: actions.payload,
+                activeFilter: actions.payload,
             };
 
         case ActionContextType.SET_FILTER_BY_NAME:

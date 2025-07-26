@@ -15,7 +15,21 @@ const initialStateContext: IInitialStateContext = {
     taskWindow: 'show',
     popupWindow: 'hide',
     counterActiveTask: 0,
-    filter: 'all',
+    filters: [
+        {
+            id: 'all',
+            text: 'all',
+        },
+        {
+            id: 'active',
+            text: 'active',
+        },
+        {
+            id: 'complete',
+            text: 'completed',
+        },
+    ],
+    activeFilter: 'all',
     filterByName: '',
 };
 
@@ -23,7 +37,8 @@ export const TodoListContext = createContext<ITodoListContext>({
     task: initialStateContext.task,
     taskWindow: initialStateContext.taskWindow,
     popupWindow: initialStateContext.popupWindow,
-    filter: initialStateContext.filter,
+    filters: initialStateContext.filters,
+    activeFilter: initialStateContext.activeFilter,
     filterByName: initialStateContext.filterByName,
     counterActiveTask: initialStateContext.counterActiveTask,
     addTask: () => {},
@@ -31,7 +46,7 @@ export const TodoListContext = createContext<ITodoListContext>({
     showDeskTask: () => {},
     clearCompliteTask: () => {},
     changeStatusTask: () => {},
-    setFilter: () => {},
+    setActiveFilter: () => {},
     setFilterByName: () => {},
 });
 
@@ -42,7 +57,8 @@ export const TodoListContextProvider = ({ children }: IProviderProps) => {
         task: state.task,
         popupWindow: state.popupWindow,
         taskWindow: state.taskWindow,
-        filter: state.filter,
+        filters: state.filters,
+        activeFilter: state.activeFilter,
         filterByName: state.filterByName,
         counterActiveTask: state.counterActiveTask,
         addTask: (value: ITask) => {
@@ -74,7 +90,7 @@ export const TodoListContextProvider = ({ children }: IProviderProps) => {
                 payload: { id, value },
             });
         },
-        setFilter: (value: ITodoListContext['filter']) => {
+        setActiveFilter: (value: ITodoListContext['activeFilter']) => {
             dispatch({
                 type: ActionContextType.SET_FILTER,
                 payload: value,

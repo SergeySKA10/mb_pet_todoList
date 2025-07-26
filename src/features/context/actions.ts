@@ -29,7 +29,7 @@ export type TodoListAction =
       }
     | {
           type: ActionContextType.SET_FILTER;
-          payload: ITodoListContext['filter'];
+          payload: ITodoListContext['activeFilter'];
       }
     | {
           type: ActionContextType.SET_FILTER_BY_NAME;

@@ -10,15 +10,22 @@ export interface IAllTask {
     [key: string]: ITask;
 }
 
+export type ActiveFilter = 'all' | 'active' | 'complete';
+
+interface ITabFilter {
+    id: ActiveFilter;
+    text: string;
+}
+
 type ActiveDisplayOnElement = 'show' | 'hide';
-type ActiveFilter = 'all' | 'active' | 'complete';
 
 export interface IInitialStateContext {
     task: Partial<IAllTask>;
     taskWindow: ActiveDisplayOnElement;
     popupWindow: ActiveDisplayOnElement;
     counterActiveTask: number;
-    filter: ActiveFilter;
+    filters: ITabFilter[];
+    activeFilter: ActiveFilter;
     filterByName: string;
 }
 
@@ -32,6 +39,6 @@ export interface ITodoListContext extends IInitialStateContext {
     showDeskTask: (value: ActiveDisplayOnElement) => void;
     clearCompliteTask: () => void;
     changeStatusTask: (id: string, value: boolean) => void;
-    setFilter: (value: ActiveFilter) => void;
+    setActiveFilter: (value: ActiveFilter) => void;
     setFilterByName: (value: string) => void;
 }

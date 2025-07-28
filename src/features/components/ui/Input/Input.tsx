@@ -10,10 +10,12 @@ export const Input = () => {
 
     const { setFilterByName } = useContext(TodoListContext);
 
+    // функция обработки события change - изменение состяния valueInput
     const onHandleInput = (e: ChangeEvent<HTMLInputElement>) => {
         setValueInput(e.target.value);
     };
 
+    // установка состояния debounce с таймером
     useEffect(() => {
         const timerID = setTimeout(() => {
             setDebounce(valueInput);
@@ -24,6 +26,7 @@ export const Input = () => {
         };
     }, [valueInput]);
 
+    // установка фильтра по тексту задачи
     useEffect(() => {
         setFilterByName(debounce.toLocaleLowerCase());
     }, [debounce]);

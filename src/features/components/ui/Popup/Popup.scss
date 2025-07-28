@@ -73,3 +73,15 @@
     align-items: center;
     opacity: 1;
 }
+
+@media screen and (max-width: 768px) {
+    .popup__task {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .popup__task {
+        width: 300px;
+    }
+}

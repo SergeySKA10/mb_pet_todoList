@@ -8,7 +8,7 @@
     border: none;
     cursor: pointer;
     background-color: inherit;
-    @media (hover: hover) {
+    @media screen and (hover: hover) {
         &:hover {
             transform: scale(1.2);
             span::before {

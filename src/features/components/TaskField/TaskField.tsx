@@ -20,6 +20,7 @@ export const TaskField = () => {
 
     const { storage } = workWithLocalStorage();
 
+    // получение состояния задач из localStorage
     useEffect(() => {
         if (localStorage.getItem(storage)) {
             const objTasks = JSON.parse(
@@ -31,12 +32,15 @@ export const TaskField = () => {
 
     const heightTaskField = taskWindow === 'hide' ? '0px' : '';
 
+    // массив для компонентов Task
     const content: JSX.Element[] = [];
 
+    // формирование списка отфильтрованных задач
     const onFilterTask = filterByName
         ? filterTaskByName(filterByName, task as IAllTask)
         : filerTask(activeFilter, task as IAllTask);
 
+    // формирование content
     for (const key in onFilterTask) {
         if (onFilterTask.hasOwnProperty(key)) {
             const completeTask =

@@ -13,6 +13,7 @@ export const Popup = () => {
     const { addTaskInStorage } = workWithLocalStorage();
     const activClazz = popupWindow === 'show' ? 'popup_active' : '';
 
+    // функция формирования задачи и добавления ее в контекст и localStorage
     const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         e.stopPropagation();

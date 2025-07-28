@@ -20,9 +20,16 @@
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    @media (hover: hover) {
+    @media screen and (hover: hover) {
         &:hover {
             transform: scale(0.97);
         }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .buttonAdd {
+        width: 150px;
+        height: 40px;
     }
 }

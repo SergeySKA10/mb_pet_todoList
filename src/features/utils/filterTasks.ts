@@ -1,5 +1,6 @@
 import type { FilterTask } from '@/shared/utilsShared/utilsShared';
 
+// функция фильтрации по фильтрам
 export const filerTask: FilterTask = (filter, task) => {
     switch (filter) {
         case 'all':

@@ -69,23 +69,27 @@ export const TodoListContextProvider = ({ children }: IProviderProps) => {
                 payload: value,
             });
         },
+        // показ и скрытие модального окна
         showPopup: (value: ITodoListContext['popupWindow']) => {
             dispatch({
                 type: ActionContextType.SET_SHOW_POPUP,
                 payload: value,
             });
         },
+        // показ и скрытие панели задач
         showDeskTask: (value: ITodoListContext['taskWindow']) => {
             dispatch({
                 type: ActionContextType.SET_SHOW_DESK_TASK,
                 payload: value,
             });
         },
+        // отчиска выполненных задач
         clearCompliteTask: () => {
             dispatch({
                 type: ActionContextType.CLEAR_COMPLITE_TASKS,
             });
         },
+        // смена статуса задачи
         changeStatusTask: (id: string, value: boolean) => {
             dispatch({
                 type: ActionContextType.SET_STATUS_TASK,
@@ -98,12 +102,14 @@ export const TodoListContextProvider = ({ children }: IProviderProps) => {
                 payload: value,
             });
         },
+        // установка фильтра по тексту задачи
         setFilterByName: (value: string) => {
             dispatch({
                 type: ActionContextType.SET_FILTER_BY_NAME,
                 payload: value,
             });
         },
+        // метод объединения задач из localStorage c контекстом
         mergeTaskWithTaskFromLocalStorage: (value: IAllTask) => {
             dispatch({
                 type: ActionContextType.SET_TASKS,

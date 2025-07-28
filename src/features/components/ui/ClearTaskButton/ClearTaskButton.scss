@@ -11,7 +11,7 @@
     background-color: inherit;
     overflow: hidden;
     cursor: pointer;
-    @media (hover: hover) {
+    @media screen and (hover: hover) {
         &:hover {
             color: $active_elem_color;
         }
@@ -19,5 +19,11 @@
 
     & span::first-letter {
         text-transform: uppercase;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .clearCompletedBtn {
+        font-size: 12px;
     }
 }

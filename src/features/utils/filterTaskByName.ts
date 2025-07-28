@@ -1,5 +1,6 @@
 import type { FilterTask } from '@/shared/utilsShared/utilsShared';
 
+// функция фильтрации по названию задачи
 export const filterTaskByName: FilterTask = (filter, task) => {
     if (filter === '') {
         return task;

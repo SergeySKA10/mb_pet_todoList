@@ -10,3 +10,15 @@
     flex-direction: column;
     gap: 10px;
 }
+
+@media screen and (max-width: 768px) {
+    .todoList {
+        max-width: 576px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .todoList {
+        max-width: 375px;
+    }
+}

@@ -3,15 +3,16 @@
     display: flex;
     gap: 15px;
     align-items: center;
-    width: 100%;
+    width: 700px;
     min-height: 40px;
     background-color: inherit;
     border-bottom: 1px solid $main_color;
     &__text {
         color: $text_color;
-        width: 100%;
+        width: 590px;
         font-size: 22px;
         font-weight: 400;
+        overflow-wrap: break-word;
         &::first-letter {
             text-transform: uppercase;
         }
@@ -21,4 +22,22 @@
 .complete {
     text-decoration: line-through;
     color: $decor_elem_color;
+}
+
+@media screen and (max-width: 768px) {
+    .task {
+        width: 576px;
+        &__text {
+            width: 490px;
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .task {
+        width: 375px;
+        &__text {
+            width: 290px;
+        }
+    }
 }

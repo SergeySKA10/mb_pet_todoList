@@ -8,6 +8,7 @@ import type {
     IProviderProps,
     ITodoListContext,
     ITask,
+    IAllTask,
 } from '@/shared/context/contextShared';
 
 const initialStateContext: IInitialStateContext = {
@@ -48,6 +49,7 @@ export const TodoListContext = createContext<ITodoListContext>({
     changeStatusTask: () => {},
     setActiveFilter: () => {},
     setFilterByName: () => {},
+    mergeTaskWithTaskFromLocalStorage: () => {},
 });
 
 export const TodoListContextProvider = ({ children }: IProviderProps) => {
@@ -99,6 +101,12 @@ export const TodoListContextProvider = ({ children }: IProviderProps) => {
         setFilterByName: (value: string) => {
             dispatch({
                 type: ActionContextType.SET_FILTER_BY_NAME,
+                payload: value,
+            });
+        },
+        mergeTaskWithTaskFromLocalStorage: (value: IAllTask) => {
+            dispatch({
+                type: ActionContextType.SET_TASKS,
                 payload: value,
             });
         },

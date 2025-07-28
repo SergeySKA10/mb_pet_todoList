@@ -3,13 +3,14 @@
 import { nanoid } from 'nanoid';
 import { useContext, type FormEvent } from 'react';
 import { TodoListContext } from '@/features/context/TodoContext';
+import { workWithLocalStorage } from '@/features/utils/workWithLoaclStorage';
 import type { ITask } from '@/shared/context/contextShared';
 import { ButtonAddTask } from '../Buttons/ButtonAddTask';
 import './Popup.scss';
 
 export const Popup = () => {
     const { popupWindow, showPopup, addTask } = useContext(TodoListContext);
-
+    const { addTaskInStorage } = workWithLocalStorage();
     const activClazz = popupWindow === 'show' ? 'popup_active' : '';
 
     const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
@@ -30,6 +31,7 @@ export const Popup = () => {
         data.id = nanoid();
         data.status = 'active';
 
+        addTaskInStorage(data);
         addTask(data);
 
         e.currentTarget.reset();

@@ -77,6 +77,22 @@ export default function reducer(
                 ...state,
             };
 
+        case ActionContextType.SET_TASKS:
+            state.task = actions.payload;
+            let counter: number = 0;
+
+            for (const key in state.task) {
+                if (state.task[key]?.status === 'active') {
+                    counter += 1;
+                }
+            }
+
+            state.counterActiveTask = counter;
+
+            return {
+                ...state,
+            };
+
         default:
             return state;
     }

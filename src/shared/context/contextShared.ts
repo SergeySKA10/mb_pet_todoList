@@ -41,4 +41,5 @@ export interface ITodoListContext extends IInitialStateContext {
     changeStatusTask: (id: string, value: boolean) => void;
     setActiveFilter: (value: ActiveFilter) => void;
     setFilterByName: (value: string) => void;
+    mergeTaskWithTaskFromLocalStorage: (value: IAllTask) => void;
 }

@@ -1,16 +1,33 @@
 'use client';
 
-import { useContext, type JSX } from 'react';
+import { useEffect, useContext, type JSX } from 'react';
 import { TodoListContext } from '@/features/context/TodoContext';
 import { filerTask } from '@/features/utils/filterTasks';
 import { filterTaskByName } from '@/features/utils/filterTaskByName';
 import { Task } from '../ui/Task/Task';
+import { workWithLocalStorage } from '@/features/utils/workWithLoaclStorage';
 import type { IAllTask } from '@/shared/context/contextShared';
 import './TaskField.scss';
 
 export const TaskField = () => {
-    const { taskWindow, task, activeFilter, filterByName } =
-        useContext(TodoListContext);
+    const {
+        taskWindow,
+        task,
+        activeFilter,
+        filterByName,
+        mergeTaskWithTaskFromLocalStorage,
+    } = useContext(TodoListContext);
+
+    const { storage } = workWithLocalStorage();
+
+    useEffect(() => {
+        if (localStorage.getItem(storage)) {
+            const objTasks = JSON.parse(
+                localStorage.getItem(storage) as string
+            );
+            mergeTaskWithTaskFromLocalStorage(objTasks as IAllTask);
+        }
+    }, []);
 
     const heightTaskField = taskWindow === 'hide' ? '0px' : '';
 

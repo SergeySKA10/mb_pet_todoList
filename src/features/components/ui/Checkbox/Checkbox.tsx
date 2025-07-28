@@ -2,6 +2,7 @@
 
 import { useContext } from 'react';
 import { TodoListContext } from '@/features/context/TodoContext';
+import { workWithLocalStorage } from '@/features/utils/workWithLoaclStorage';
 import './Checkbox.scss';
 
 export const Checkbox = ({
@@ -12,9 +13,11 @@ export const Checkbox = ({
     complete: boolean;
 }) => {
     const { changeStatusTask } = useContext(TodoListContext);
+    const { setStatusCompliteTask } = workWithLocalStorage();
     const display = complete ? 'block' : 'none';
 
     const onChangeStatusTask = () => {
+        setStatusCompliteTask(id);
         changeStatusTask(id, complete);
     };
 

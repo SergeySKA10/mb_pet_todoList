@@ -9,6 +9,7 @@ export enum ActionContextType {
     SET_FILTER = 'SET_FILTER',
     SET_FILTER_BY_NAME = 'SET_FILTER_BY_NAME',
     CHANGE_COUNTER_TASK = 'CHANGE_COUNTER_TASK',
+    SET_TASKS = 'SET_TASKS',
 }
 
 export type TodoListAction =
@@ -38,4 +39,8 @@ export type TodoListAction =
     | {
           type: ActionContextType.SET_STATUS_TASK;
           payload: { id: string; value: boolean };
+      }
+    | {
+          type: ActionContextType.SET_TASKS;
+          payload: ITodoListContext['task'];
       };

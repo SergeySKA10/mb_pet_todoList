@@ -25,8 +25,7 @@ export const Input = () => {
     }, [valueInput]);
 
     useEffect(() => {
-        console.log(debounce);
-        // setFilterByName(debounce);
+        setFilterByName(debounce.toLocaleLowerCase());
     }, [debounce]);
 
     return (

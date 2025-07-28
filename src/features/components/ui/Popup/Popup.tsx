@@ -24,7 +24,7 @@ export const Popup = () => {
         };
 
         formData.forEach((value, key) => {
-            data[key] = value as string;
+            data[key] = (value as string).toLocaleLowerCase();
         });
 
         data.id = nanoid();

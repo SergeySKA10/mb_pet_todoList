@@ -3,6 +3,7 @@
 import { Roboto } from 'next/font/google';
 import { TodoListContextProvider } from '@/features/context/TodoContext';
 import { Popup } from '@/features/components/ui/Popup/Popup';
+import { PopupTutorial } from '@/features/components/ui/PopupTutorial/PopupTutorial';
 import '@/style/globals.scss';
 
 const robotoSans = Roboto({
@@ -22,6 +23,7 @@ export default function RootLayout({
                 <TodoListContextProvider>
                     {children}
                     <Popup />
+                    <PopupTutorial />
                 </TodoListContextProvider>
             </body>
         </html>

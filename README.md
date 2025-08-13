@@ -1,9 +1,11 @@
 <h1 align="center">Приложение для составления списка дел (To do list)</h1><br/>
+
 ###
+
 <div align="left">
   <p>Deploying to Vercel: https://mb-pet-todo-list-nyrm.vercel.app/</p><br>
-</div>
-###
+</div><br/>
+
 <div align="left">
   <p>В данном приложении реализуется возможность составления списка дел, фильтрации дел по статусу выпонения</p><br>
   <p>Сохранение списка дел реализовано с помощью localStorage</p>
